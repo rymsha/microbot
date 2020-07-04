@@ -125,7 +125,7 @@ class MicroBotPush:
         s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
         try:
             os.remove(self.socket_path)
-        except FileNotFoundError:
+        except (FileNotFoundError, PermissionError):
             pass
 
         s.bind(self.socket_path)
